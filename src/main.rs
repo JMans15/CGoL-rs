@@ -161,7 +161,7 @@ fn build_ui(app: &Application) {
                 for cell in graph.iter_mut() {
                     *cell = EmptyCell;
                 }
-                canvas.queue_draw();
+                tx.send(graph.to_owned()).expect("Couldn't send");
             }
             gtk::Inhibit(false)
         }),
