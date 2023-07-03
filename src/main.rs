@@ -91,7 +91,7 @@ fn build_ui(app: &Application) {
         cr.set_source_rgb(bgr, bgg, bgb);
         cr.paint().expect("Couldn't paint");
         if do_draw_grid.load(std::sync::atomic::Ordering::SeqCst) {
-            draw_grid(&cr, 160, 90);
+            draw_grid(cr, 160, 90);
         }
     }));
 
@@ -114,7 +114,7 @@ fn build_ui(app: &Application) {
                     }
                 }
                 if do_draw_grid.load(std::sync::atomic::Ordering::SeqCst) {
-                    draw_grid(&cr, 160, 90);
+                    draw_grid(cr, 160, 90);
                 }
             }));
             canvas.queue_draw();
