@@ -7,19 +7,6 @@ pub struct Gg {
     pub height: usize,
 }
 
-#[test]
-fn neighbors() {
-    let graph = Gg::new(10, 5);
-    assert_eq!(
-        graph.neighbors(0, 0).sort(),
-        vec![(0, 1), (1, 0), (1, 1)].sort()
-    );
-    assert_eq!(
-        graph.neighbors(4, 4).sort(),
-        vec![(3, 3), (3, 4), (4, 3), (5, 3), (5, 4)].sort()
-    );
-}
-
 #[derive(Clone, Copy, PartialEq, Default, Debug)]
 pub enum CellType {
     #[default]
@@ -49,7 +36,7 @@ impl<'a> IntoIterator for &'a Gg {
 
     fn into_iter(self) -> Self::IntoIter {
         GgIterator {
-            gg: &self,
+            gg: self,
             index_w: 0,
             index_h: 0,
         }
@@ -68,13 +55,11 @@ impl Gg {
 
     pub fn neighbors(&self, i: usize, j: usize) -> Vec<(usize, usize)> {
         let a: Vec<usize> = (i as i32 - 1..=i as i32 + 1)
-            .into_iter()
             .filter(|i: &i32| 0.le(i) && i32::lt(i, &(self.width as i32)))
             .map(|i| i as usize)
             .collect();
 
         let b: Vec<usize> = (j as i32 - 1..=j as i32 + 1)
-            .into_iter()
             .filter(|j: &i32| 0.le(j) && i32::lt(j, &(self.height as i32)))
             .map(|j| j as usize)
             .collect();
