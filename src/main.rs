@@ -6,7 +6,7 @@ use std::thread;
 mod grid_graph;
 use grid_graph::{CellType::*, Gg};
 
-const APP_ID: &str = "org.gtk_rs.wallpaper-generator";
+const APP_ID: &str = "org.gtk_rs.conways_gol";
 
 static BASECOLOR: [f64; 3] = [0.12, 0.12, 0.18];
 static FULLCOLOR: [f64; 3] = [0.19, 0.2, 0.27];
